@@ -3,12 +3,12 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/<FOLDER_NAME>'));
 
-// Link index.html of build folder with router.
-app.get('/*', (req,res,next) => {
-    res.sendFile(path.join(__dirname + '/dist/<FOLDER_NAME>/index.html'));
+app.use(express.static(__dirname + '/dist/heroku-deploy'));
+
+app.get('/*', function(req,res) {
+
+res.sendFile(path.join(__dirname+'/dist/heroku-deploy/index.html'));
 });
 
-
-app.listen(process.env.PORT || 8000);
+app.listen(process.env.PORT || 8080);
